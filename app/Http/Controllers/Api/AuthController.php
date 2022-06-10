@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends BaseController
 {
     public function login(LoginRequest $request){
-        $user = User::where('email', $request->username)->first();
+        $user = User::where('email', $request->email)->first();
         if($user){
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Token')->accessToken;
-                return response()->json($token, 200);
+                return $this->sendResponse(["access_token" => $token]);
             }else{
                 return $this->sendValidationError('authentication', __('messages.auth_failed'), 401);             
             }
@@ -34,6 +34,17 @@ class AuthController extends BaseController
             'longitude' => $request->longitude,
         ]);
         $token = $user->createToken('Token')->accessToken;
-        return response()->json($token, 200);
+        return $this->sendResponse(["access_token" => $token]);
+    }
+
+    public function logout(Request $request)
+    {
+       $user = $request->user();
+       if ($user) {
+          $token = $request->user()->token();
+          $token->revoke();
+          return $this->sendResponse([]);
+       }
+       return $this->sendError(__('messages.went-wrong'), 500);
     }
 }
