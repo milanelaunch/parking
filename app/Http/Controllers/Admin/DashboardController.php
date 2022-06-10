@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\User;
+use App\Models\Vendor;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +20,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard.index');
+        $vendor = Vendor::all()->count();
+        $user = User::all()->count();
+
+        return view('admin.dashboard.index',compact('vendor','user'));
     }
 
     public function changePassword()

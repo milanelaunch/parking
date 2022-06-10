@@ -34,7 +34,7 @@
                                             <i class="material-icons">person_outline</i>
                                         </div>
                                         <p class="card-category">User</p>
-                                        <h3 class="card-title"></h3>
+                                        <h3 class="card-title">{{ $user }}</h3>
                                     </div>
                                     <div class="card-footer">
                                         <div class="stats">
@@ -51,8 +51,8 @@
                                         <div class="card-icon">
                                             <i class="material-icons">account_box</i>
                                         </div>
-                                        <p class="card-category">Seller</p>
-                                        <h3 class="card-title"></h3>
+                                        <p class="card-category">Vendor</p>
+                                        <h3 class="card-title">{{ $vendor }}</h3>
                                     </div>
                                     <div class="card-footer">
                                         <div class="stats">

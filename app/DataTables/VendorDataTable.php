@@ -23,7 +23,7 @@ class VendorDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('action', function ($data) {
                 $result = "";
-                if ($data->name == "1") {
+                if ($data->is_verified == "1") {
                     $result .= '<button type="button" class="btn btn-danger btn-sm changeStatusCategory" status="0" title="click to Inactivate User" category_id="' . $data->id . '"><i class="fa fa-unlock"></i></button> ';
                 } else {
                     $result .= '<button type="button" class="btn btn-secondary btn-sm changeStatusCategory" status="1" title="click to Activate User" category_id="' . $data->id . '"><i class="fa fa-lock"></i></button> ';
@@ -33,8 +33,14 @@ class VendorDataTable extends DataTable
 
                 return $result;
             })
-
-            ->rawColumns(['action'])
+            ->editColumn('is_verified', function ($data) {
+                if ($data->is_verified == 0) {
+                    return '<span class="badge badge-danger">Inactive</span>';
+                } else {
+                    return '<span class="badge badge-success">Active</span>';
+                }
+            })
+            ->rawColumns(['action','is_verified'])
             ->addIndexColumn();
     }
 
@@ -83,6 +89,8 @@ class VendorDataTable extends DataTable
             Column::make('id')->hidden(true),
             Column::make('name')->title('Name'),
             Column::make('email')->title('email'),
+            Column::make('mobile')->title('mobile'),
+            Column::make('is_verified')->title('is_verified'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

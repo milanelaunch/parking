@@ -16,6 +16,6 @@ class Vendor extends Authenticatable
     protected  $table = 'vendors';
 
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password','mobile','address','latitude','longitude','is_verified'
     ];
 }
