@@ -21,6 +21,12 @@
                     <p>User</p>
                 </a>
             </li>
+            <li class="nav-item {{ request()->is('*Vendor*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.Vendor.index') }}">
+                    <i class="material-icons">person_outline</i>
+                    <p>Vendor</p>
+                </a>
+            </li>
             {{-- <li class="nav-item {{ request()->is('*Category*') ? 'active' : '' }}">
                 <a class="nav-link" href="">
                     <i class="material-icons">category</i>

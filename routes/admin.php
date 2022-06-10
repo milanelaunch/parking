@@ -23,4 +23,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'User', 'as' => 'User.'], function () {
         Route::get('/',                     'UserController@index')->name('index');
     });
+
+    Route::group(['prefix' => 'Vendor', 'as' => 'Vendor.'], function () {
+        Route::get('/',                     'VendorController@index')->name('index');
+    });
 });
