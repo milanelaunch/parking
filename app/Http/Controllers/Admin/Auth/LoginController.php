@@ -28,18 +28,16 @@ class LoginController extends Controller
         return view('admin.auth.login');
     }
 
+    //admin login
     protected function attemptLogin(Request $request)
     {
         return $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
 
-        // if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-        //     return redirect()->intended(route('index'));
-        // }
-        //      return redirect()->back()->withInput($request->only('email','remember'));
     }
 
+    //admin logout
     public function logout(Request $request)
     {
         $this->guard()->logout();

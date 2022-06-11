@@ -31,6 +31,7 @@ class DashboardController extends Controller
         return view('admin.auth.change-pass');
     }
 
+    //change admin password
     public function updatePassword(Request $request)
     {
         $request->validate([

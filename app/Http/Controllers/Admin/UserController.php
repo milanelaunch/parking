@@ -9,6 +9,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    //user index page
     public function index(UserDataTable $UserDataTable)
     {
         return $UserDataTable->render('admin.User.index');

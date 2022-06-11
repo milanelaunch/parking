@@ -10,10 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends BaseController
 {
+    //user login
     public function login(LoginRequest $request){
         $user = User::where('email', $request->email)->first();
         if($user){
-            if (Hash::check($request->password, $user->password)) {
+            if (Hash::check($request->password, $user->password)) { //check password
                 $token = $user->createToken('Token')->accessToken;
                 return $this->sendResponse(["access_token" => $token]);
             }else{
@@ -24,6 +25,7 @@ class AuthController extends BaseController
         }
     }
 
+    //user registation
     public function register(RegisterRequest $request){
         $user = User::create([            
             'email' => $request->email,
@@ -37,6 +39,7 @@ class AuthController extends BaseController
         return $this->sendResponse(["access_token" => $token]);
     }
 
+    //logout user
     public function logout(Request $request)
     {
        $user = $request->user();
@@ -48,6 +51,7 @@ class AuthController extends BaseController
        return $this->sendError(__('messages.went-wrong'), 500);
     }
 
+    //get user profile
     public function profile(Request $request)
     {
        $user = $request->user();       
