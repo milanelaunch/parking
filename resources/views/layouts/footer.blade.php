@@ -2,7 +2,7 @@
         <div class="container-fluid">
           <div class="copyright float-right" id="date">
             , made with <i class="material-icons">favorite</i> by
-            <a href="https://dixit007.netlify.app/" target="_blank">Dixit Patidar</a> .
+            <a href="#" target="_blank">KINGS MAN</a> .
           </div>
         </div>
       </footer>

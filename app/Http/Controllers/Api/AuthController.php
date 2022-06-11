@@ -47,4 +47,15 @@ class AuthController extends BaseController
        }
        return $this->sendError(__('messages.went-wrong'), 500);
     }
+
+    public function profile(Request $request)
+    {
+       $user = $request->user();       
+       if ($user) {
+          $userData = User::where('id',$user->id)->select('name','email','mobile')->first();
+          
+          return $this->sendResponse($userData);
+       }
+       return $this->sendError(__('messages.went-wrong'), 500);
+    }
 }
