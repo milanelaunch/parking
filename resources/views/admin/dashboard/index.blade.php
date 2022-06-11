@@ -62,7 +62,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                        {{-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                             <a href="">
                                 <div class="card card-stats">
                                     <div class="card-header card-header-primary card-header-icon">
@@ -157,7 +157,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                        </div> --}}
 
 
                     </div>
